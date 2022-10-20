@@ -8,6 +8,12 @@ const port = 3000;
 // Config static file
 app.use(express.static(path.join(__dirname, "public")));
 
+// Xu ly du lieu dang form
+app.use(express.urlencoded({ extended: true }));
+
+// Xu ly du lieu dang javascript
+app.use(express.json());
+
 // HTTP logger
 app.use(morgan("dev"));
 
@@ -28,6 +34,11 @@ app.get("/news", (req, res) => {
 
 app.get("/search", (req, res) => {
     res.render("search");
+});
+
+app.post("/search", (req, res) => {
+    console.log(req.body);
+    res.send("");
 });
 
 app.listen(port, () => {
