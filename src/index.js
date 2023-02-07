@@ -2,6 +2,7 @@ const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
 const handlebars = require("express-handlebars");
+const methodOverride = require("method-override");
 
 const routes = require("./routes");
 const db = require("./config/db/index");
@@ -21,6 +22,9 @@ app.use(express.json());
 // HTTP logger
 app.use(morgan("dev"));
 
+// Method-Override
+app.use(methodOverride("_method"));
+
 // Template engine
 app.engine(
     "hbs",
@@ -28,7 +32,13 @@ app.engine(
         extname: ".hbs",
         helpers: {
             sum: (a, b) => a + b,
-            splitString: (str) => {},
+            splitString: (str) => {
+                const newStr = str.split("\n");
+                const itemsAsHtml = newStr.map(
+                    (item) => "<li>" + item + "</li>"
+                );
+                return "<ul>\n" + itemsAsHtml.join("\n") + "\n</ul>";
+            },
         },
     })
 );

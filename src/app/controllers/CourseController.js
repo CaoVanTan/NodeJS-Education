@@ -6,6 +6,21 @@ class CourseController {
         res.render("courses/create");
     }
 
+    // GET /courses/edit/:id
+    edit(req, res, next) {
+        Course.findById(req.params.id)
+            .lean()
+            .then((course) => res.render("courses/edit", { course }))
+            .catch(next);
+    }
+
+    // PUT /courses/:id
+    update(req, res, next) {
+        Course.updateOne({ _id: req.params.id }, req.body)
+            .then(() => res.redirect("/me/stored/courses"))
+            .catch(next);
+    }
+
     // POST /courses/store
     store(req, res, next) {
         const formData = req.body;

@@ -1,7 +1,7 @@
 <div class="my-4">
     <h3 class="mb-3">Khóa học của tôi</h3>
 
-    <table class="table">
+    <table class="table align-middle">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -9,6 +9,7 @@
                 <th scope="col">Trình độ</th>
                 <th scope="col">Thời gian tạo</th>
                 <th scope="col">Giá</th>
+                <th scope="col">Tùy chọn</th>
             </tr>
         </thead>
         <tbody>
@@ -19,6 +20,13 @@
                     <td>{{this.level}}</td>
                     <td>{{this.createdAt}}</td>
                     <td>{{this.cost}}</td>
+                    <td>
+                        <a
+                            href="/courses/edit/{{this._id}}"
+                            class="btn btn-warning"
+                        >Sửa</a>
+                        <a href="" class="btn btn-danger">Xóa</a>
+                    </td>
                 </tr>
             {{/each}}
         </tbody>

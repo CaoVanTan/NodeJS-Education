@@ -1,35 +1,54 @@
 <div class="my-4">
-    <h3 class="mb-3">Đăng khóa học</h3>
+    <h3 class="mb-3">Cập nhật khóa học</h3>
 
-    <form method="POST" action="/courses/store">
+    <form method="POST" action="/courses/{{course._id}}?_method=PUT">
         <div class="mb-3">
             <label for="name" class="form-label">Tên khóa học:</label>
-            <input type="text" class="form-control" id="name" name="name" />
-        </div>
-        <div class="mb-3">
-            <label for="description" class="form-label">Mô tả:</label>
-            <textarea
-                class="form-control"
-                id="description"
-                name="description"
-            ></textarea>
-        </div>
-        <div class="mb-3">
-            <label for="details" class="form-label">Chi tiết khóa học:</label>
             <input
                 type="text"
                 class="form-control"
-                id="details"
-                name="details"
+                id="name"
+                name="name"
+                value="{{course.name}}"
             />
         </div>
         <div class="mb-3">
+            <label for="description" class="form-label">Mô tả:</label>
+            <input
+                type="text"
+                class="form-control"
+                id="description"
+                name="description"
+                value="{{course.description}}"
+            />
+        </div>
+        <div class="mb-3">
+            <label for="details" class="form-label">Chi tiết khóa học:</label>
+            <textarea
+                class="form-control"
+                id="details"
+                name="details"
+            >{{course.details}}</textarea>
+        </div>
+        <div class="mb-3">
             <label for="level" class="form-label">Trình độ:</label>
-            <input type="text" class="form-control" id="level" name="level" />
+            <input
+                type="text"
+                class="form-control"
+                id="level"
+                name="level"
+                value="{{course.level}}"
+            />
         </div>
         <div class="mb-3">
             <label for="cost" class="form-label">Giá:</label>
-            <input type="text" class="form-control" id="cost" name="cost" />
+            <input
+                type="text"
+                class="form-control"
+                id="cost"
+                name="cost"
+                value="{{course.cost}}"
+            />
         </div>
         <div class="mb-3">
             <label for="videoId" class="form-label">Video ID:</label>
@@ -38,9 +57,10 @@
                 class="form-control"
                 id="videoId"
                 name="videoId"
+                value="{{course.videoId}}"
             />
         </div>
 
-        <button type="submit" class="btn btn-primary">Thêm khóa học</button>
+        <button type="submit" class="btn btn-primary">Lưu khóa học</button>
     </form>
 </div>
