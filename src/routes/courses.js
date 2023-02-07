@@ -6,6 +6,9 @@ router.get("/create", courseController.create);
 router.post("/store", courseController.store);
 router.get("/edit/:id", courseController.edit);
 router.put("/:id", courseController.update);
+router.delete("/:id", courseController.delete);
+router.patch("/restore/:id", courseController.restore);
+router.delete("/force/:id", courseController.forceDelete);
 router.get("/:slug", courseController.show);
 
 module.exports = router;

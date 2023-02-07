@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 const slug = require("mongoose-slug-generator");
+const mongooseDelete = require("mongoose-delete");
 
+mongoose.set("strictQuery", false);
+mongoose.connect("mongodb://127.0.0.1:27017/f8_education_dev");
 mongoose.plugin(slug);
 
 const Schema = mongoose.Schema;
@@ -20,5 +23,10 @@ const Course = new Schema(
         timestamps: true,
     }
 );
+
+Course.plugin(mongooseDelete, {
+    deletedAt: true,
+    overrideMethods: true,
+});
 
 module.exports = mongoose.model("Course", Course);
